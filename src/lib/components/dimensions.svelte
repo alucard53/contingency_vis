@@ -20,15 +20,15 @@
 
 <form
 	on:submit|preventDefault={handleSubmit}
-	class="flex flex-col justify-center items-center gap-3"
+	class="flex flex-col justify-center items-center gap-3 h-1/4"
 >
-	<p class="text-xl font-medium">Enter number of rows and columns in contingency table:</p>
+	<p class="text-xl font-medium mb-8">Enter number of rows and columns in contingency table:</p>
 	<label for="rows" class="w-1/5">
 		<input
 			type="number"
 			placeholder="rows"
 			bind:value={rows}
-			min="0"
+			min="1"
 			class="text-center w-full h-12 rounded-lg border-2 border-red-600"
 		/>
 	</label>
@@ -37,7 +37,7 @@
 			type="number"
 			placeholder="cols"
 			bind:value={cols}
-			min="0"
+			min="1"
 			class="text-center w-full h-12 rounded-lg border-2 border-red-600"
 		/>
 	</label>
