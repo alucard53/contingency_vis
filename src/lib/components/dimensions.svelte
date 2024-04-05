@@ -39,6 +39,7 @@
 			bind:value={cols}
 			min="1"
 			class="text-center w-full h-12 rounded-lg border-2 border-red-600"
+			required
 		/>
 	</label>
 	<button type="submit" class="bg-white py-1 px-4 rounded-md hover:bg-gray-100 transition-all"

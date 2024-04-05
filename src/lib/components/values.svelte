@@ -6,7 +6,6 @@
 
 	const dispatch = createEventDispatcher();
 
-	console.log(rows, cols);
 	const values: (string | number)[][] = [];
 
 	for (let i = 0; i <= rows; i++) {
@@ -19,9 +18,7 @@
 	values[0][0] = '/';
 
 	function getPlaceholder(i: number, j: number) {
-		if (i == 0 && j == 0) {
-			return '/';
-		} else if (j == 0) {
+		if (j == 0) {
 			return 'Enter row name';
 		} else if (i == 0) {
 			return 'Enter col name';
@@ -57,15 +54,19 @@
 		>
 			{#each values as row, i}
 				{#each row as _, j}
-					<label>
-						<input
-							type="text"
-							bind:value={values[i][j]}
-							class="border border-red-600 text-center h-10"
-							placeholder={getPlaceholder(i, j)}
-							required
-						/>
-					</label>
+					{#if i == 0 && j == 0}
+						<span class="bg-red-600"></span>
+					{:else}
+						<label>
+							<input
+								type="text"
+								bind:value={values[i][j]}
+								class="border border-red-600 text-center h-10"
+								placeholder={getPlaceholder(i, j)}
+								required
+							/>
+						</label>
+					{/if}
 				{/each}
 			{/each}
 		</div>

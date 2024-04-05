@@ -25,8 +25,6 @@
 		values[values.length - 1].push(sum);
 	}
 
-	console.log(values);
-
 	for (let i = 0; i < m - 1; i++) {
 		percs.push([]);
 		const rowMax = Number(values[i + 1][n]);
@@ -39,8 +37,6 @@
 			});
 		}
 	}
-
-	console.log(percs);
 
 	let hover: boolean[][] = [];
 
@@ -56,21 +52,25 @@
 	>
 		{#each values as row, i}
 			{#each row as item, j}
-				<span
-					class="bg-red-100 p-4 text-center border border-red-600"
-					on:mouseover={() => (hover[i][j] = true)}
-					on:mouseout={() => (hover[i][j] = false)}
-				>
-					{item}
-					{#if i > 0 && i < m && j > 0 && j < n && hover[i][j]}
-						<div
-							class="flex flex-col fixed z-10 p-5 border border-red-600 bg-white rounded-md text-sm"
-						>
-							<span>Row: {percs[i - 1][j - 1].row.toString().substring(0, 5)}%</span>
-							<span>Col: {percs[i - 1][j - 1].col.toString().substring(0, 5)}%</span>
-						</div>
-					{/if}
-				</span>
+				{#if i == 0 && j == 0}
+					<span class="bg-red-600"></span>
+				{:else}
+					<span
+						class="bg-red-100 p-4 text-center border border-red-600"
+						on:mouseover={() => (hover[i][j] = true)}
+						on:mouseout={() => (hover[i][j] = false)}
+					>
+						{item}
+						{#if i > 0 && i < m && j > 0 && j < n && hover[i][j]}
+							<div
+								class="flex flex-col fixed z-10 p-5 border border-red-600 bg-white rounded-md text-sm"
+							>
+								<span>Row: {percs[i - 1][j - 1].row.toString().substring(0, 5)}%</span>
+								<span>Col: {percs[i - 1][j - 1].col.toString().substring(0, 5)}%</span>
+							</div>
+						{/if}
+					</span>
+				{/if}
 			{/each}
 		{/each}
 	</div>
