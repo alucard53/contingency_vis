@@ -47,6 +47,7 @@
 
 <div class="flex flex-col justify-center items-center gap-3 h-2/4">
 	<p class="text-xl font-medium">Enter the values:</p>
+
 	<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-5">
 		<div
 			class="grid values border border-red-600"
@@ -70,9 +71,11 @@
 				{/each}
 			{/each}
 		</div>
-		<button type="submit" class="bg-white py-1 px-4 rounded-md hover:bg-gray-100 transition-all">
-			Next
-		</button>
+		<button
+			type="submit"
+			class="bg-white py-2 px-4 rounded-md hover:bg-red-50 transition-all border border-red-400 text-lg"
+			>Next</button
+		>
 	</form>
 </div>
 
