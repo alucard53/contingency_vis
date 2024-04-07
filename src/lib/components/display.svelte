@@ -55,7 +55,7 @@
 	}
 </script>
 
-<div class="flex flex-col items-center pt-12">
+<div class="flex flex-col items-center pt-12 h-full">
 	<div
 		class="grid values border border-red-600 text-xl"
 		style={`--rows: ${values.length}; --cols: ${values[1].length}`}
@@ -75,9 +75,10 @@
 						on:focus={() => {}}
 					>
 						{item}
-						{#if i > 0 && i < m && j > 0 && j < n && hover[i][j]}
+						{#if i > 0 && i < m && j > 0 && j < n}
 							<div
-								class="flex flex-col fixed z-10 p-5 border border-red-600 bg-white rounded-md bg-opacity-80"
+								class="flex flex-col fixed z-10 p-5 border border-red-600 bg-white rounded-md bg-opacity-80 transition-opacity ease-in-out"
+								class:hidden={!hover[i][j]}
 							>
 								<span>Row: {percs[i - 1][j - 1].row.toString().substring(0, 5)}%</span>
 								<span>Col: {percs[i - 1][j - 1].col.toString().substring(0, 5)}%</span>
